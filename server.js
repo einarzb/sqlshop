@@ -10,7 +10,7 @@ var mysql = require('mysql');
 
 //global var
 var sendresult = [];
-
+var prodID;
 //setup directories for server access
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
@@ -65,16 +65,20 @@ app.get('/catagories', function(req, res) {
        });
    });
 
-  //  con.query('insert into cart where categories_id=' + href.product + ';', function(err, result, fields) {
-  //      if (err) throw err;
-
-       io.on('connection', function(socket) {
-           console.log("Listening To cart")
-           socket.on('addtocart', function(data){
-             console.log(data);
+   //sending product to cart
+io.on('connection', function(socket) {
+        console.log("Listening To cart")
+        //fetch choosen prod_id
+        socket.on('addtocart', function(data){
+           prodID = data.prodID;
+           //send prod_id to cart with qty 1
+           con.query('INSERT INTO cart (product_id, qty) values (' + prodID + ', 1);', function(err, result, fields) {
+               if (err) throw err;
            });
-       });
-  //  });
+        });
+}); //end connection
+
+
 
     res.redirect("/products.html");
     res.end();
