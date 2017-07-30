@@ -80,7 +80,35 @@ io.on('connection', function(socket) {
         });
 }); //end connection
 
-/******************** removing products from cart *******************/
+/******************** emiting inner join to get full data by cart product id *******************/
+
+con.query('SELECT * FROM products INNER JOIN cart ON products.id = cart.product_id;', function(err, sendresult, fields) {
+         if (err) throw err;
+        //  console.log("successss");
+        //  console.log(sendresult);
+
+         io.on('connection', function(socket) {
+                 console.log("EMITING inner join")
+                 socket.emit('loadCartFromSql', {sendresult:sendresult});
+         });
+ });
+
+
+/******************** building cart filled with products *******************/
+io.on('connection', function(socket) {
+        console.log("gonna fill the cart")
+        socket.on('loadCartFromSql', function(data){
+          console.log("im data");
+          console.log(data);
+          //  prodToCart = data.prodID;
+           //send prod_id to cart with qty 1
+          //  con.query('select * from cart (product_id);', function(err, result, fields) {
+          //      if (err) throw err;
+          //      console.log("added product id " + prodID + " to cart");
+          //      //add here if else for qty increment
+          //  });
+        });
+}); //end connection
 
 
     res.redirect("/products.html");

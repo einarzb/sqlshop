@@ -44,7 +44,7 @@ function addToCart(selectedItem){
       counter:counter
     }
     //invoke functions
-    checkCart(item);
+    // checkCart(item);
     fillCart(item);
 
     //server side
@@ -59,7 +59,28 @@ function checkCart(item){
 }
 
 function fillCart(item){
-  console.log("im in fillcart function");
-  console.log(item);
+  //client side
+
+  //initialize
+  var bill = 0;
+  var qty = 0;
+  var tr = $('<tr>');
+
+  //create tds
+  var productName = "<td class=table-title> " + item.selectedName + "</td>";
+  var productPrice = "<td>" + item.selectedPrice + "</td>";
+  var productQty = "<td><input type=number" + " " + 'min="1"' + "value=" + item.counter + " "  + "class=qty></input></td>";
+  var removeBtn = "<td><a class='removeQuantity' href='#'>-</a></td>";
+
+//calc bill
+  bill = (item.counter * item.selectedPrice).toFixed();
+  var productBill = "<td>" + bill + "</td>";
+
+  //append everything to tr
+  tr.append(productName,productPrice,productQty,productBill,removeBtn);
+
+   //append tr to the cart
+   $(".cartTable").append(tr);
+   $("#bill").append(bill);
   return;
-}
+};
