@@ -11,25 +11,19 @@ $(document).ready(function(){
 
 /********************************* general functions ****************************************************/
 
-      //display cart from main Cart Icon
-      $("body").on('click', ".openCart", function () {
-         $('#cart').toggle();
-      });
+  //display cart from main Cart Icon
+  $("body").on('click', ".openCart", function () {
+     $('#cart').toggle();
+  });
 
-      //add-to-cart
-      $("body").on('click', ".addToCart", function () {
-        $('#cart').css('display','block');
-        var selected = $(this).parent();
-        var prodID = selected[0].id;
-        var selectedName = $(this).parent().data().name;
-        addToCart(prodID,selectedName);
-      });
+  //add-to-cart
+  $("body").on('click', ".addToCart", function () {
+    $('#cart').css('display','block');
+    var selectedItem = $(this).parent();
+    addToCart(selectedItem);
+  });
 
-      function addToCart(prodID,selectedName){
-        //server side
-        socket.emit('addtocart', {prodID:prodID});
-        //client side
-        console.log(selectedName);
-        return;
-      };
+
+
+
 });//end of document ready

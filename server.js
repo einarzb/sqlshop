@@ -74,7 +74,7 @@ io.on('connection', function(socket) {
            //send prod_id to cart with qty 1
            con.query('INSERT INTO cart (product_id, qty) values (' + prodID + ', 1);', function(err, result, fields) {
                if (err) throw err;
-               console.log("added product to cart");
+               console.log("added product id " + prodID + " to cart");
                //add here if else for qty increment
            });
         });
