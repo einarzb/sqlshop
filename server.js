@@ -65,19 +65,22 @@ app.get('/catagories', function(req, res) {
        });
    });
 
-   //sending product to cart
+/******************** sending products to cart *******************/
 io.on('connection', function(socket) {
         console.log("Listening To cart")
-        //fetch choosen prod_id
+        //save prod_id from client
         socket.on('addtocart', function(data){
            prodID = data.prodID;
            //send prod_id to cart with qty 1
            con.query('INSERT INTO cart (product_id, qty) values (' + prodID + ', 1);', function(err, result, fields) {
                if (err) throw err;
+               console.log("added product to cart");
+               //add here if else for qty increment
            });
         });
 }); //end connection
 
+/******************** removing products from cart *******************/
 
 
     res.redirect("/products.html");

@@ -9,38 +9,7 @@ $(document).ready(function(){
   return;
   });
 
-function fillcart(data){
-  //if cart is empty
-  if (!data){
-    return;
-  }
-
-  var prod;
-
-  var productsToCart = data.sendresult;
-    for (var i = 0; i < productsToCart.length; i++) {
-      var shop = $("#shop");
-      // var myProduct = {
-      //   "title": productsToCart[i].product_name,
-      //   "price": productsToCart[i].product_price,
-      //   "image": productsToCart[i].product_picture,
-      //   "sku": productsToCart[i].product_sku
-      // }
-      var id = productsToCart[i].id;
-      var title = productsToCart[i].product_name;
-      var price = productsToCart[i].product_price;
-      var image = productsToCart[i].product_picture;
-      var sku = productsToCart[i].product_sku;
-
-      //append object element and styles
-      prod = $("<li id=" + id +">" + "<p class=title>"+ title + "</p>" +  "<img class=prod-img src=" + image + ">" + " " + '<p class=sku>' + sku + '</p>' + '<span class="price">' + price +  " $" + '</span>' +  '<button class=addToCart> add </button>' + "</li>");
-
-      //appened object to shop
-      $(shop).append(prod);
-    }
-// socket.disconnect();
-
-};//end fillcart
+/********************************* general functions ****************************************************/
 
       //display cart from main Cart Icon
       $("body").on('click', ".openCart", function () {
@@ -52,11 +21,15 @@ function fillcart(data){
         $('#cart').css('display','block');
         var selected = $(this).parent();
         var prodID = selected[0].id;
-        addToCart(prodID);
+        var selectedName = $(this).parent().data().name;
+        addToCart(prodID,selectedName);
       });
 
-      function addToCart(prodID){
+      function addToCart(prodID,selectedName){
+        //server side
         socket.emit('addtocart', {prodID:prodID});
+        //client side
+        console.log(selectedName);
         return;
       };
 });//end of document ready
