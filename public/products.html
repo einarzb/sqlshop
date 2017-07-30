@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+<header class="header">
+  <h1><a href="index.html">99 cent market</a></h1>
+      <span class="icon-cart" style="float: right">
+        <a href="#" class="openCart">
+            <div class="cart-counter">&nbsp;5</div>
+            <div class="cart-line-1" style="background-color: #fff"></div>
+            <div class="cart-line-2" style="background-color: #fff"></div>
+            <div class="cart-line-3" style="background-color: #fff"></div>
+            <div class="cart-wheel" style="background-color: #fff"></div>
+        </a>
+     </span>
+</header>
+
+<section>
+<div class="main">
+    <div id="shop"></div>
+    <div id="newCart"> </div>
+
+  <div id="cart">
+
+      <h1>shopping cart</h1>
+      <table class="cartTable">
+        <tr>
+            <th></th>
+            <th>product</th>
+            <th>QTY</th>
+            <th>price</th>
+            <th>total</th>
+        </tr>
+        <tr>
+          <h1 class="bill"> total
+             <span id="bill"></span>
+          </h1>
+        </tr>
+  <!-- <tr> -->
+    <!-- paypal -->
+    <!-- <span class="paypal">
+      <form class="myPaypalForm" target="paypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="19218">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_addtocart_120x26.png" alt="Add to Cart" name="submit">
+          <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </span> -->
+  <!-- </tr>-->
+    </table>
+  </div>
+ </div>
+</section>
+
+</body>
+</html>

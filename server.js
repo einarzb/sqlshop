@@ -1,33 +1,87 @@
 //require packages
 var express = require('express');
 var app = express();
+
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
 var fs = require('fs');
+var mysql = require('mysql');
+
+//global var
+var sendresult = [];
 
 //setup directories for server access
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
-//DB
-var mysql = require('mysql');
+/******************** DB connection *************************/
 
-  var connect = mysql.createConnection({
+  var con = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'6470464',
     database:'shopDB'
   });
 
+  /******************** pull catagories *******************/
+con.connect(function(err){
+    if(err) throw err;
+    con.query("SELECT * FROM categories", function(err, result, fields){
+      if(err)throw err;
+
+      //export data as script file to client side
+      result = "var catagories= " + JSON.stringify(result);
+      fs.writeFile("./public/" + 'cat.js', result, "utf8", function(err, data){
+        if(err){
+          console.log(err);
+        }
+      });
+    });
+});
 
 
-  //load website
-  app.get('/', function(req, res){
-    res.send("./index.html");
+/******************** let's move it *******************/
+
+//load html
+app.get('/', function(req, res){
+  res.redirect("/index.html");
+  res.end();
+});
+
+
+/******************** load products by Catagory id *******************/
+
+app.get('/catagories', function(req, res) {
+   var href = req.query;
+
+   con.query('select * from products where categories_id=' + href.product + ';', function(err, result, fields) {
+       if (err) throw err;
+       console.log(href.product);
+       sendresult = result;
+       io.on('connection', function(socket) {
+           console.log("Listening To Click")
+           socket.emit('once', { sendresult: sendresult });
+       });
+   });
+
+  //  con.query('insert into cart where categories_id=' + href.product + ';', function(err, result, fields) {
+  //      if (err) throw err;
+
+       io.on('connection', function(socket) {
+           console.log("Listening To cart")
+           socket.on('addtocart', function(data){
+             console.log(data);
+           });
+       });
+  //  });
+
+    res.redirect("/products.html");
     res.end();
-  });
+})
 
+/******************** rockenroll *******************/
 
-
-
-  app.listen(4000, function(){
-    console.log("rockenroll 4000");
+  server.listen(8000, function(){
+    console.log("rockenroll 8000");
   });

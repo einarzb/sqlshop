@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+<body>
+<header class="header">
+      <h1>99 cent market</h1>
+      <span class="icon-cart">
+        <a href="#" class="openCart">
+            <div class="cart-counter">&nbsp;5</div>
+            <div class="cart-line-1" style="background-color: #fff"></div>
+            <div class="cart-line-2" style="background-color: #fff"></div>
+            <div class="cart-line-3" style="background-color: #fff"></div>
+            <div class="cart-wheel" style="background-color: #fff"></div>
+        </a>
+     </span>
+</header>
+
+<div class="catagories">
+  <a href="#" id="cat1"></a>
+  <a href="#" id="cat2"></a>
+  <a href="#" id="cat3"></a>
+  <a href="#" id="cat4"></a>
+</div>
+
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="cat.js"></script>
+<script type="text/javascript">
+//append catagories to html
+for (var i = 0; i < catagories.length; i++) {
+  var cat = document.getElementById("cat" + (i+1));
+  cat.innerText = catagories[i].categories;
+  cat.href = '/catagories/?product=' + (i+1);
+}
+</script>
+
+</body>
+</html>

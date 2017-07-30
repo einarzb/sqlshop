@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body{
+    background-color: #EAEBE7;
+    font-family: 'Oswald', sans-serif;
+    margin:0;
+    padding:0;
+  }
+
+header > h1 {
+  background-color: #A8CF34;
+  margin:auto;
+  text-align: center;
+  font-size: 3em;
+  color:#fff;
+  text-shadow: 2px 2px 12px #155A32;
+  border-bottom: 5px solid #155A32;
+}
+
+.catagories a {
+  display:block;
+  padding:2px;
+  margin:2px;
+  width:300px;
+}
+
+.sub-total {
+  padding: 3px 7px;
+  line-height: 1;
+  font-size: 0.8em;
+  background-color: #A8CF34;
+  color:#fff;
+  border-radius: 7px;
+}
+
+.qty>input{
+  font-size:0.9em;
+  color: grey;
+  padding: 2px;
+  width:30px;
+  text-align: center;
+  border-radius: 5px;
+  border:none;
+}
+a {
+    text-decoration: none;
+  }
+
+.main {
+/*max-width: 960px;*/
+ display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#cart h1 {
+    margin:auto;
+    text-align: center;
+    font-size: 2.2em;
+    color:orange;
+  }
+
+#shop {
+    margin-top: 20px;
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    flex:0 0 70%;
+    justify-content: space-around;
+  }
+
+.display-container {
+      display: grid;
+      grid-template-columns: repeat(4, 25%);
+      grid-gap: 1em;
+      margin-bottom: 1em;
+  }
+
+#bill {
+    font-size: 0.9em;
+    font-weight: lighter;
+    text-align: center;
+    border-bottom:1px solid orange;
+    border-top:1px solid orange;
+  }
+
+#cart {
+  justify-content: flex-end;
+  position: relative;
+  margin-top: 70px;
+  display: none;
+  border: 1px solid grey;
+  background-color:rgba(255,255,255,1);
+  flex:0 0 27%;
+  max-height:400px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+li {
+    font-family: arial;
+    box-shadow: 2px 2px 13px #000;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.90);
+    border: 2px solid #FFF;
+    padding: 0;
+    text-align: center;
+    margin-top: 12px;
+    transition: all .3s;
+    height: 190px;
+    width: 190px;
+    /*border:2px solid black;*/
+  }
+
+li:hover {
+    font-family: arial;
+    box-shadow: 2px 2px 1px #000;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.90);
+    border: 2px solid #FFF;
+    padding: 0;
+    text-align: center;
+    margin-top: 12px;
+    transition: all .6s;
+    height: 190px;
+    width: 190px;
+    /*border:2px solid black;*/
+  }
+.paypal {
+  margin-right:140px;
+  position: relative;
+}
+.sku {
+  font-size: 0.75em;
+  position: absolute;
+  color:#000;
+margin-top: 175px;
+}
+
+.price   {
+    font-size: 0.75em;
+    background-color: #fff;
+    margin-left: -90px;
+    position: absolute;
+    margin-top:180px;
+    color:#000;
+    padding: 1px;
+    width:30px;
+    border: 2px dashed red;
+  }
+
+ .title{
+    z-index: 999;
+    font-weight: lighter;
+    font-size: 0.9em;
+    width:100%;
+    text-align: center;
+    color:#000;
+    position:relative;
+    padding-top:110px;
+    padding-left: 50px;
+    width:400px;
+    text-align: center;
+  }
+
+.table-title {
+  font-size: 0.7em;
+  padding-top:0px;
+}
+
+.prod-img {
+  padding-top: 10px;
+  position: absolute;
+  margin-right:80px;
+  max-width:250px;
+  height:110px;
+}
+
+
+button {
+    border-radius: 3px;
+    background-color: #A8CF34;
+    border:none;
+    color:#fff;
+    position: relative;
+    height:20px;
+    z-index: 9999;
+    width:130px;
+    margin-top: 170px;
+    float: right;
+    margin-right: 2px;
+  }
+
+  .removeQuantity {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right:40px;
+    font-size:1em;
+    color:#fff;
+    background-color: red;
+    border-radius: 30%;
+  }
+
+  table {
+    background-color:rgba(255,255,255,0.5);
+    margin: 20px 0px;
+    text-align: center;
+    color:grey;
+    padding-top: 8px;
+    width:350px;
+    font-size: 1em;
+    font-family: arial;
+    font-weight: lighter;
+  }
+
+  th{
+    border-bottom: 1px solid grey;
+  }
+
+/*cart icon*/
+.icon-cart {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  overflow: hidden;
+  margin-left:440px;
+  margin-top: -75px;
+}
+
+.icon-cart .cart-counter {
+  font-family: arial;
+  margin-top: 1px;
+  font-size: 1.35em;
+  text-shadow: none;
+  color:#000;
+  z-index: 9999;
+  background-color: yellow;
+  width: 42%;
+  height: 39%;
+  border-radius: 100%;
+  position: absolute;
+  left: 35%;
+  top: 2%;
+}
+
+.icon-cart .cart-line-1 {
+  width: 15%;
+  height: 7%;
+  position: absolute;
+  left: 8%;
+  top: 25%;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotate(5deg);
+  background-color: #000;
+  border-bottom-left-radius: 35%;
+}
+
+.icon-cart .cart-line-2 {
+  width: 35%;
+  height: 7%;
+  position: absolute;
+  left: 6%;
+  top: 40%;
+  -webkit-transform: rotate(80deg);
+  -moz-transform: rotate(80deg);
+  -ms-transform: rotate(80deg);
+  transform: rotate(80deg);
+  background-color: #000;
+}
+
+.icon-cart .cart-line-2:before {
+  content: "";
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  left: 45%;
+  top: -280%;
+  -webkit-transform: rotate(-80deg);
+  -moz-transform: rotate(-80deg);
+  -ms-transform: rotate(-80deg);
+  transform: rotate(-80deg);
+  background-color: inherit;
+}
+
+.icon-cart .cart-line-2:after {
+  content: "";
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  left: 59%;
+  top: -670%;
+  background-color: inherit;
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 25%;
+}
+
+.icon-cart .cart-line-3 {
+  width: 30%;
+  height: 7%;
+  position: absolute;
+  left: 33%;
+  top: 45%;
+  background-color: #000;
+}
+
+.icon-cart .cart-line-3:after {
+  content: "";
+  width: 124%;
+  height: 100%;
+  position: absolute;
+  top: -150%;
+  left: -5%;
+  background-color: inherit;
+}
+
+.icon-cart .cart-wheel {
+  width: 12%;
+  height: 12%;
+  background-color: #000;
+  border-radius: 100%;
+  position: absolute;
+  left: 28%;
+  bottom: 20%;
+}
+
+.icon-cart .cart-wheel:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: 100%;
+  position: absolute;
+  left: 200%;
+  bottom: 0;
+}

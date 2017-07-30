@@ -1,0 +1,1 @@
+var catagories= [{"id":1,"categories":"food"},{"id":2,"categories":"drinks"},{"id":3,"categories":"clothes"},{"id":4,"categories":"other"}]
